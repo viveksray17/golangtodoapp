@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Todo App</title>
+  </head>
+  <body>
+    <h2>Add a Todo</h2>
+    <form action="/" method="post">
+      Enter Todo Title<input type="text" name="todo_title" placeholder="Write an essay"></br>
+      Enter Todo Description<input type="text" name="todo_desc" placeholder="Write an essay on Mahatma Gandhi in about 150 words"></br>
+      <input type="submit">
+    </form>
+    <h2>Your Todos</h2>
+    <table border=1>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{ range . }}
+        <tr>
+          <td>{{ .Title }}</td>
+          <td>{{ .Description }}</td>
+          <td>
+            <a href="/delete/{{ .Id }}">Delete</a>
+            <a href="/update/{{ .Id }}">update</a>
+          </td>
+        </tr>
+        {{ end }}
+      </tbody>
+    </table>
+  </body>
+</html>
