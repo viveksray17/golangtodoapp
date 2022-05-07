@@ -74,7 +74,7 @@ func postgresqlExecute(command string) {
 }
 
 func postgresqlQuery(query string) *sql.Rows {
-	psqlConnection := fmt.Sprintf("host=localhost port=5432 user=vivek password=%v dbname=vivek sslmode=disable", os.Getenv("PG_PASS"))
+	psqlConnection := fmt.Sprintf("host=%v port=%v user=%v password=%v dbname=%v sslmode=disable", host, port, user, os.Getenv("PG_PASS"), dbname)
 	db, err := sql.Open("postgres", psqlConnection)
 	checkError(err)
 	rows, err := db.Query(query)
